@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import "./MovieList.css";
 import Fire from '../../assets/fire.png';
 import MovieCard from "../MovieCard/MovieCard";
+import _ from "lodash";
 
 const MovieList = () => {
 
@@ -51,7 +52,7 @@ const MovieList = () => {
 	console.log(sort);
 
 	return (
-		<section className='movie_list'>
+		<section className='movie_list' >
 			<header className='align_center movie_list_header'>
 				<h2 className='align_center movie_list_heading'>
 					인기순 <img src={Fire} alt='fire emoji' className='navbar_emoji' />
