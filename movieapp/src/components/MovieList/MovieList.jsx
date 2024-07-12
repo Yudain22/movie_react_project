@@ -24,10 +24,14 @@ const MovieList = () => {
 	};
 
 	const handleFilter = (rate) => {
-		setMinRating(rate);
-
-		const filtered = movies.filter((movie) => movie.vote_average >= rate);
-		setFilterMovies(filtered);
+		if (minRating === rate) {
+			setMinRating(0);
+			setFilterMovies(movies);
+		} else {
+			setMinRating(rate);
+			const filtered = movies.filter((movie) => movie.vote_average >= rate);
+			setFilterMovies(filtered);
+		}
 	};
 
 	return (
@@ -39,13 +43,13 @@ const MovieList = () => {
 
 				<div className='align_center movie_list_fs'>
 					<ul className='align_center movie_filter'>
-					<li className='movie_filter_item active' onClick={() => handleFilter(8)}>
+					<li className={minRating === 8 ? 'movie_filter_item active' : 'movie_filter_item'} onClick={() => handleFilter(8)}>
 							8+ Star
 						</li>
-						<li className='movie_filter_item' onClick={() => handleFilter(7)}>
+						<li className={minRating === 7 ? 'movie_filter_item active' : 'movie_filter_item'} onClick={() => handleFilter(7)}>
 							7+ Star
 						</li>
-						<li className='movie_filter_item' onClick={() => handleFilter(6)}>
+						<li className={minRating === 6 ? 'movie_filter_item active' : 'movie_filter_item'} onClick={() => handleFilter(6)}>
 							6+ Star
 						</li>
 					</ul>
